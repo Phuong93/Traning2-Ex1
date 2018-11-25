@@ -35,7 +35,6 @@ public class Helper implements userName {
 
 	public void loginFail(String URL) throws InterruptedException {
 		driver.get(URL);
-		Thread.sleep(2000);
 		WebElement userName = driver.findElement(By.xpath("//input[@type ='text']"));
 		userName.clear();
 		userName.sendKeys("phuong.tt");
@@ -52,7 +51,6 @@ public class Helper implements userName {
 
 	public void loginSuccess(String URL) throws InterruptedException {
 		driver.get(URL);
-		Thread.sleep(2000);
 		WebElement userName = driver.findElement(By.xpath("//input[@type ='text']"));
 		userName.clear();
 		userName.sendKeys("standard_user");
@@ -66,7 +64,6 @@ public class Helper implements userName {
 			System.out.println("Sign in successed");
 		} else
 			System.out.println("Sign in unsuccessed");
-		Thread.sleep(3000);
 		driver.findElement(By.xpath("//div[@class='inventory_list']/div[1]//button")).click();
 		driver.findElement(By.xpath("//div[@class='inventory_list']/div[2]//button")).click();
 	}
