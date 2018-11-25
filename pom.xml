@@ -1,0 +1,135 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Exercise</groupId>
+  <artifactId>TraningAutomation_Phuong</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>PhuongTran_Auto_Training</name>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <xml.version>1.4.01</xml.version>
+		<validator.version>1.4.1</validator.version>
+		<cucumber.version>1.2.4</cucumber.version>
+		<junit.version>4.12</junit.version>
+		<picocontainer.version>2.14.2</picocontainer.version>
+		<jetty.version>9.3.0.M2</jetty.version>
+		<selenium.version>3.4.0</selenium.version>
+		<ashot.version>1.4.10</ashot.version>
+		<surefire.version>2.20.1</surefire.version>
+		<compiler.version>3.7.0</compiler.version>
+		<failsafe.version>2.20.1</failsafe.version>
+		<poiapache.version>3.15</poiapache.version>
+  </properties>
+
+  <dependencies>
+  <dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>${poiapache.version}</version>
+</dependency>
+    <dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>${validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-htmlunit-driver</artifactId>
+			<version>2.52.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xml-apis</groupId>
+			<artifactId>xml-apis</artifactId>
+			<version>${xml.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>${cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-picocontainer</artifactId>
+			<version>${cucumber.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.picocontainer</groupId>
+			<artifactId>picocontainer</artifactId>
+			<version>${picocontainer.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ru.yandex.qatools.ashot</groupId>
+			<artifactId>ashot</artifactId>
+			<version>${ashot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+		
+  </dependencies>
+  <build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${surefire.version}</version>
+				<configuration>
+					<skip>true</skip>
+					<forkMode>once</forkMode>
+					<argLine>-javaagent:serenity/serenity.jar -Xms512m -Xmx1024m
+						${included.packages} ${included.adapters}</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${failsafe.version}</version>
+				<configuration>
+					
+					<reuseForks>true</reuseForks>
+					<!--<forkCount>2</forkCount> -->
+					<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${compiler.version}</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<fork>true</fork>
+					<executable>C:\Program Files\Java\jdk1.8.0_141\bin\javac.exe</executable>
+				</configuration>
+			</plugin>
+			
+		</plugins>
+	</build>
+</project>
